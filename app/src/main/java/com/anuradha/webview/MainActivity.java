@@ -17,6 +17,16 @@ public class MainActivity extends AppCompatActivity {
         WebSettings webSettings = portfolio_webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
         portfolio_webview.loadUrl("https://anoo-radha.github.io/");
+        //to load clicked links on the app itself instead of loading in the browser
+        portfolio_webview.setWebViewClient(new WebViewClient());
+    }
 
+    @Override
+    public void onBackPressed() {
+        if(portfolio_webview.canGoBack()){
+            portfolio_webview.goBack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }
